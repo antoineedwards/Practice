@@ -2,9 +2,11 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
 class LinkedList:
     def __init__(self):
         self.head = None
+        
     def insert_at_end(self, *dataItems):
         for data in dataItems:
             newNode = Node(data)
@@ -16,6 +18,8 @@ class LinkedList:
                 while lastNode.next:
                     lastNode = lastNode.next
                 lastNode.next = newNode
+                newNode.prev = lastNode
+                
     def insert_at_start(self, *dataItems):
         for data in dataItems[::-1]:
             newNode = Node(data)
